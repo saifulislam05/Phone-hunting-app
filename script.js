@@ -2,6 +2,7 @@ const searchInput = document.getElementById("search_input");
 const searchBtn = document.getElementById("search_btn");
 const phonesWrapperEl = document.getElementById("phones_wrapper");
 const showAllBtn = document.getElementById("showALLBtn");
+const myModal = document.getElementById("my_modal");
 
 // initial search text
 let searchText = "iphone";
@@ -45,9 +46,9 @@ function displayPhones(data) {
                       </figure>
                       <div class="card-body items-center text-center">
                         <h2 class="card-title">${phone_name}</h2>
-                        <p>${slug}</p>
+                        <p>There are many variations of passages of available, but the majority have suffered</p>
                         <div class="card-actions">
-                          <button class="btn btn-primary text-white">Show Details</button>
+                          <button  id=${slug} class="showDetailsBtn btn btn-primary text-white">Show Details</button>
                         </div>
                       </div>`;
 
@@ -56,4 +57,44 @@ function displayPhones(data) {
 
   phonesWrapperEl.innerHTML = "";
   phonesWrapperEl.appendChild(fragment);
+}
+
+// show Details handler
+phonesWrapperEl.addEventListener("click", findId);
+function findId(e) {
+    if (e.target.classList.contains("showDetailsBtn")) {
+        const id = e.target.id;
+        showDetailsHandler(id)
+    }
+}
+const showDetailsHandler = async(id) => {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/phone/${id}`
+    );
+    const data = await res.json();
+
+    const phone = data.data;
+    showPhoneDetails(phone);
+    console.log(phone);
+}
+
+function showPhoneDetails(data) {
+    const { brand, image, name, releaseDate, mainFeatures } = data;
+    
+    const modelNameEl = document.getElementById("detailsPhoneName");
+    const brandNameEl = document.getElementById("detailsBrand");
+    const detailsSpecEl = document.getElementById("detailsSpec");
+    const releaseDateEl = document.getElementById("releaseDate");
+    const imageDivEl = document.getElementById("imgContainer");
+
+    modelNameEl.innerText = name;
+    brandNameEl.innerText = brand;
+    imageDivEl.innerHTML = `<img src="${image}" alt="">`;
+    releaseDateEl.innerText = releaseDate;
+    let featuresString = "";
+    for (const key in mainFeatures) {
+        featuresString=featuresString+`${key}: ${mainFeatures[key]} \n`
+    }
+    detailsSpecEl.innerText = featuresString;
+    myModal.showModal();
 }
