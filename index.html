@@ -47,17 +47,18 @@
     <!-- Search phones section  -->
     <div class="search-phones w-11/12 mx-auto ">
         <h1 class="text-center text-2xl font-bold">Search Your Phone</h1>
-        <div class="search-box w-fit mx-auto flex gap-4 my-6">
-            <input id="search_input" type="text" placeholder="Search here..."
+        <div class="search-box flex justify-center items-center gap-4 my-6">
+            <input id="search_input" type="text" placeholder="e.g. oppo, samsung, iphone"
                 class="input input-bordered input-primary w-full max-w-xs" />
             <button id="search_btn" class="btn btn-primary">Search</button>
 
         </div>
 
-        <div id="phones_wrapper" class="phones-wrapper">
+        <div id="phones_wrapper" class="phones-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-8 my-5">
             <div class="card w-96 bg-base-100 shadow-md">
                 <figure class="px-10 pt-10">
-                    <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" alt="iphone" class="rounded-xl" />
+                    <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" alt="iphone"
+                        class="rounded-xl" />
                 </figure>
                 <div class="card-body items-center text-center">
                     <h2 class="card-title text-2xl">iPhone 13 mini</h2>
@@ -68,8 +69,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="flex justify-center my-8 ">
+            <button id="showALLBtn" class="btn btn-primary text-white">Show All</button>
+        </div>
     </div>
+
+
 
 
 </body>
