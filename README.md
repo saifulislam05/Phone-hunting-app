@@ -7,6 +7,8 @@ This is a simple web application that allows users to search for phones and view
 - **Search Phones:** Users can search for phones using the search bar.
 - **Show All:** Displays all phones when clicked.
 - **Show Details:** View detailed information about a specific phone.
+## Demo
+Checkout the live demo [Phone Hunting App](https://phone-hunting-app-bysaiful.netlify.app/)
 
 ## Technologies Used
 - HTML
